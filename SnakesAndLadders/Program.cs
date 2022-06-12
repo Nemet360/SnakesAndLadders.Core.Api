@@ -1,5 +1,6 @@
 using Microsoft.OpenApi.Models;
 using SnakesAndLadders.BE;
+using SnakesAndLadders.Common;
 using SnakesAndLadders.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,6 +25,7 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 builder.Services.AddSingleton<ISnakesAndLaddersService, SnakesAndLaddersService>();
+builder.Services.AddSingleton<ICube, Cube>();
 
 var app = builder.Build();
 

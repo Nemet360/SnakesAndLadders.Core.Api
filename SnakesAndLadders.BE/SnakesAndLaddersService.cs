@@ -8,7 +8,7 @@ namespace SnakesAndLadders.BE
     {
         private readonly IBoard _board;
         private readonly ICube _cube;
-        public SnakesAndLaddersService(IConfiguration config)
+        public SnakesAndLaddersService(IConfiguration config, ICube cube)
         {
             _cube = new Cube();
             _board = new Board(_cube, int.Parse(config["TotalBoardSlots"]), int.Parse(config["NumberOfLadders"]), int.Parse(config["NumberOfSnakes"]));
