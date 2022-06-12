@@ -1,4 +1,5 @@
-﻿using SnakesAndLadders.Common;
+﻿using Microsoft.Extensions.Configuration;
+using SnakesAndLadders.Common;
 using SnakesAndLadders.Interfaces;
 
 namespace SnakesAndLadders.BE
@@ -7,10 +8,10 @@ namespace SnakesAndLadders.BE
     {
         private readonly IBoard _board;
         private readonly ICube _cube;
-        public SnakesAndLaddersService()
+        public SnakesAndLaddersService(IConfiguration config)
         {
             _cube = new Cube();
-            _board = new Board(_cube, 100, 5, 5);
+            _board = new Board(_cube, int.Parse(config["TotalBoardSlots"]), int.Parse(config["NumberOfLadders"]), int.Parse(config["NumberOfSnakes"]));
         }
 
         public async Task<IPlayer> StartNewPlayerGame(string name)
